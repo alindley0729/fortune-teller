@@ -1,1 +1,95 @@
-public class F;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+
+public class fortuneTeller {
+
+
+
+    public static void main(String[] args) {
+        List<String> acceptableColors = Arrays.asList("red", "orange", "yellow", "green", "blue", "indigo", "violet");
+        Scanner input = new Scanner(System.in);
+
+
+        System.out.println("Enter your first name: ");
+        String firstName = input.next();
+        System.out.println("Enter your last name: ");
+        String lastName = input.next();
+        System.out.println("Enter your age: ");
+        int age = input.nextInt();
+        System.out.println("Enter your birth month(ex 7 is July)");
+        int birthMonth = input.nextInt();
+        String favoriteColor = "";
+        while (!acceptableColors.contains(favoriteColor)|| favoriteColor.equals("help")){
+            System.out.println("Enter your favorite ROYGBIV color: ");
+            favoriteColor = input.next();
+            if (acceptableColors.contains(favoriteColor)) {
+                break;
+            }
+            System.out.println("needs to be "+ acceptableColors);
+        }
+        System.out.println("Enter number of siblings");
+        int numberOfSiblings = input.nextInt();
+
+        int retirementYears = 0;
+        if(age % 2 == 0){
+            retirementYears = 12;
+        }else
+            retirementYears =15;
+
+        String vacationHomeLocation = "";
+        if(numberOfSiblings == 0){
+            vacationHomeLocation = "Key West, FL";
+        }else if(numberOfSiblings == 1){
+            vacationHomeLocation = "Cabo, Mexico";
+        }else if(numberOfSiblings == 2){
+            vacationHomeLocation ="Kalamazoo, Michigan";
+        }else if (numberOfSiblings == 3){
+            vacationHomeLocation =  "Rio de Janeiro, Brazil";
+        }else if (numberOfSiblings > 3){
+            vacationHomeLocation = "New Orleans, Louisiana";
+        }else if (numberOfSiblings <0){
+            vacationHomeLocation = "Cleveland, Ohio";
+        }
+
+        String modeOfTransportation = "";
+        if(favoriteColor.equals("red")){
+            modeOfTransportation = "scooter";
+        }else if (favoriteColor.equals("orange")){
+            modeOfTransportation = "UFO";
+        }else if(favoriteColor.equals("yellow")){
+            modeOfTransportation ="Bugatti";
+        }else if (favoriteColor.equals("green") ){
+            modeOfTransportation = "Chevy Cruz";
+        }else if (favoriteColor.equals("blue")){
+            modeOfTransportation = "Toyota Corolla";
+        }else if (favoriteColor.equals("indigo")){
+            modeOfTransportation = "Maserati";
+        }else if (favoriteColor.equals("violet")){
+            modeOfTransportation = "Jeep Cherokee";
+        }
+
+        String bankBalance = "";
+        if (inBetween(birthMonth, 0, 4)) {
+            bankBalance = "523124";
+        } else if (inBetween(birthMonth, 5, 8)) {
+            bankBalance = "1254216";
+        } else if (inBetween(birthMonth, 9, 12)) {
+            bankBalance = "2001";
+        } else {
+            bankBalance = "0";
+        }
+        System.out.println(firstName + " " + lastName +
+                " will retire in "+ retirementYears + "years, with $" +bankBalance + " in the bank, a vacation home in " +
+                vacationHomeLocation + ", and travel by " + modeOfTransportation);
+
+
+    }
+
+
+
+
+    private static boolean inBetween(Integer x, Integer y, Integer z) {
+        return x >= y && x < z;
+    }
